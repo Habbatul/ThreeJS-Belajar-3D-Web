@@ -100,17 +100,7 @@ var moon = new THREE.Mesh(
 
 scene.add(moon);
 
-moon.position.z = 30;
-moon.position.setX(-15);
 
-jeff.position.z = -5;
-jeff.position.x = 3;
-
-torus.position.z = -5;
-torus.position.x = 3;
-
-torus2.position.z = -5;
-torus2.position.x = 3;
 
 
 //control mouse
@@ -137,16 +127,47 @@ document.body.onscroll = moveCamera;
 moveCamera();
 
 
-// tambahan untuk animasi 
+//inisialisasi secara realtime
 function myFunction(x) {
   if (x.matches) { // If media query matches
-    document.body.style.backgroundColor = "yellow";
+    moon.position.z = 4;
+    moon.position.setX(-15);
+    
+    jeff.position.z = -8;
+    jeff.position.x = 1;
+    jeff.position.y = -3;
+    
+    torus.position.z = -8;
+    torus.position.x = 1;
+    torus.position.y = -3;
+    
+    torus2.position.z = -8;
+    torus2.position.x = 1;
+    torus2.position.y = -3;
+
   } else {
-    document.body.style.backgroundColor = "pink";
+  moon.position.z = 30;
+  moon.position.setX(-15);
+  moon.position.y =0;
+  
+  jeff.position.z = -5;
+  jeff.position.x = 3;
+  jeff.position.y =0;
+  
+  torus.position.z = -5;
+  torus.position.x = 3;
+  jeff.position.y =0;
+  
+  torus2.position.z = -5;
+  torus2.position.x = 3;
+  jeff.position.y =0;
   }
 }
-
 var x = window.matchMedia("(max-width: 991px)");
+myFunction(x);
+x.addListener(myFunction);
+
+
 
 
 let j=0;let k=0;
@@ -155,6 +176,8 @@ let j=0;let k=0;
 // Animation Loop
 
 function animate() {
+
+//animasi yang dilakukan 
   var t = document.body.getBoundingClientRect().bottom;
   requestAnimationFrame(animate);
 
