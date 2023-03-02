@@ -136,8 +136,24 @@ function moveCamera() {
 document.body.onscroll = moveCamera;
 moveCamera();
 
-// Animation Loop
+
+// tambahan untuk animasi 
+function myFunction(x) {
+  if (x.matches) { // If media query matches
+    document.body.style.backgroundColor = "yellow";
+  } else {
+    document.body.style.backgroundColor = "pink";
+  }
+}
+
+var x = window.matchMedia("(max-width: 991px)");
+
+
 let j=0;let k=0;
+
+
+// Animation Loop
+
 function animate() {
   var t = document.body.getBoundingClientRect().bottom;
   requestAnimationFrame(animate);
@@ -152,7 +168,6 @@ function animate() {
   torus2.rotation.z -= 0.01;
 
   moon.rotation.x += 0.005;
-
   if(camera.position.x >= 0.8 && k<=80){
     moon.position.x +=0.08;
     moon.position.z -=0.05;

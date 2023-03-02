@@ -2,7 +2,7 @@
 
 
 :root {
-  --spacing: 350px;
+  --spacing: 250px;
   text-align: justify;
   font-family: brandon-grotesque, sans-serif;
   font-weight: 400;
@@ -23,7 +23,7 @@ main {
   grid-template-columns: repeat(12, 1fr);
 }
 
-h1, h2, h3, blockquote {
+h1, h2, h3, .quotes {
   font-family: elevon, sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -40,10 +40,13 @@ canvas {
 
 
   header {
-    background-color: black;
+    background: linear-gradient(to right, #4A00E0, #8E2DE2);
+    border-radius: 30px;
     grid-column: 2 / span 5;
     font-size: 2.5rem;
     padding-left: 4rem;
+    padding-right: 4rem;
+    text-align: center;
     margin-bottom: var(--spacing);
   }
 
@@ -56,19 +59,19 @@ canvas {
     margin-bottom: var(--spacing);
   }
 
-  blockquote {
+  .quotes{
     margin: 0;
     padding: 0;
     grid-column: 2 / span 9;
     margin-bottom: var(--spacing);
   }
 
-  blockquote p {
+  .quotes p {
     color: black;
     background-color: white;
     font-size: 4rem;
     display: inline;
-    line-height: 1.11;
+    line-height: 1.4;
   }
 
   .left {
@@ -99,21 +102,25 @@ canvas {
 
     
     html{
-      font-size: 55%;
+      font-size: 75%;
     }
 
     header {
       background-color: black;
       grid-column: 1 / span 12;
-      font-size: 3rem;
+      font-size: 2rem;
       text-align: center;
       padding-left: 0.1rem;
+      padding-right: 0.1rem;
       margin-left: 20%;
       margin-right: 20%;
       margin-bottom: var(--spacing);
     }
     section {
-      grid-column: 1/ 12;
+      font-size: 10000px;
+      grid-column: 1 / span 12;
+      margin-left: 20%;
+      margin-right: 5%;
       padding: 1rem;
       background-color: rgb(0, 0, 0);
       font-size: 1.25rem;
@@ -122,16 +129,16 @@ canvas {
       margin-bottom: var(--spacing);
     }
 
-    blockquote p {
+    .quotes p {
       color: black;
       background-color: white;
-      font-size: 4rem;
+      font-size: 2rem;
       display: inline;
-      line-height: 1;
+      line-height: 1.5;
     }  
     
     .left {
-      grid-column: 1 / 12;
+      grid-column: 1 / span 12;
     }
   }
   /* mobile */
