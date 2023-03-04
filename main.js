@@ -127,11 +127,24 @@ document.body.onscroll = moveCamera;
 moveCamera();
 
 
+//ukuran untuk objek cilinder
+//di mobile
+var moonX_mob=-15;
+var moonY_mob=0;
+var moonZ_mob=4;
+//di desktop
+var moonX=-23;
+var moonY=0;
+var moonZ=32;
+
 //inisialisasi secara realtime
 function myFunction(x) {
   if (x.matches) { // If media query matches
-    moon.position.z = 4;
-    moon.position.setX(-15);
+
+
+    moon.position.z = moonZ_mob;
+    moon.position.x =moonX_mob;
+    moon.position.y =moonY_mob;
     
     jeff.position.z = -8;
     jeff.position.x = 1;
@@ -146,9 +159,9 @@ function myFunction(x) {
     torus2.position.y = -3;
 
   } else {
-  moon.position.z = 30;
-  moon.position.setX(-15);
-  moon.position.y =0;
+  moon.position.z = moonZ;
+  moon.position.x=moonX;
+  moon.position.y =moonY;
   
   jeff.position.z = -5;
   jeff.position.x = 3;
@@ -169,8 +182,8 @@ x.addListener(myFunction);
 
 
 
-
-let j=0;let k=0;
+//buat durasi
+let j=0;
 
 
 // Animation Loop
@@ -191,22 +204,45 @@ function animate() {
   torus2.rotation.z -= 0.01;
 
   moon.rotation.x += 0.005;
-  if(camera.position.x >= 0.8 && k<=80){
-    moon.position.x +=0.08;
-    moon.position.z -=0.05;
-    k++;
-  }
-  if(camera.position.x<0.8){
-    if(k>0){
-      k--
-    }
-    if(k!=0){
-      moon.position.x -=0.08;
-      moon.position.z +=0.05;
-    }
-  }
 
-  console.log(t, " ==> ", camera.position.x);
+  if ((window.matchMedia("(max-width: 991px)")).matches) {
+    if(window.pageYOffset >= document.documentElement.scrollHeight - document.documentElement.clientHeight){
+      if(moon.position.x <= moonX_mob+1 || moon.position.z >= moonZ_mob-1){
+        moon.position.x +=0.08;
+        moon.position.z -=0.05;
+      }else{
+        moon.position.x +=0;
+        moon.position.z -=0;
+      }
+
+    }
+    else if(window.pageYOffset<document.documentElement.scrollHeight - document.documentElement.clientHeight){ 
+      if(moon.position.z < moonZ_mob || moon.position.x > moonX_mob || moon.position.y != moonY_mob){
+        moon.position.x -=0.08;
+        moon.position.z +=0.05;
+      }
+    }
+  }else {
+    if(window.pageYOffset >= document.documentElement.scrollHeight - document.documentElement.clientHeight){
+      if(moon.position.x <= moonX+9 || moon.position.z >= moonZ-9){
+        moon.position.x +=0.08;
+        moon.position.z -=0.05;
+      }else{
+        moon.position.x +=0;
+        moon.position.z -=0;
+      }
+
+    }
+    else if(window.pageYOffset<document.documentElement.scrollHeight - document.documentElement.clientHeight){ 
+      if(moon.position.z < moonZ || moon.position.x > moonX || moon.position.y != moonY){
+        moon.position.x -=0.08;
+        moon.position.z +=0.05;
+      }
+    }
+  }
+  
+
+  console.log(t, " ==> ", moon.position.x, ", ", moon.position.y, ", ", moon.position.z);
   if(j<=100)
     jeff.position.y +=0.01;
   else
@@ -214,7 +250,7 @@ function animate() {
   if(j==200)
     j=0;
   // controls.update();
-  renderer.render(scene, camera);
+  renderer.render(scene, camera)
 }
 
 animate();
