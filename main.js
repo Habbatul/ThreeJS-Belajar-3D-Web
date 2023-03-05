@@ -66,9 +66,9 @@ function addStar() {
   var [x, y, z] = Array(3)
     .fill()
     .map(() => THREE.MathUtils.randFloatSpread(100));
-  starlight.position.set(x,y,z);
+
   star.position.set(x, y, z);
-  scene.add(star, starlight);
+  scene.add(star);
 }
 
 Array(200).fill().forEach(addStar);
