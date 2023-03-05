@@ -29,7 +29,7 @@ window.addEventListener('resize', function(){
 // Torus
 
 var geometry = new THREE.TorusGeometry(10, 0.7, 16, 4);
-var material = new THREE.MeshStandardMaterial({ color: 0xbf47ff });
+var material = new THREE.MeshStandardMaterial({ color: 0xbf47ff, wireframe : true });
 var torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
@@ -61,13 +61,14 @@ function addStar() {
   var geometry = new THREE.SphereGeometry(0.25, 24, 24);
   var material = new THREE.MeshStandardMaterial({ color: 0xffffff });
   var star = new THREE.Mesh(geometry, material);
+  var starlight= new THREE.PointLight(0xffffff);
 
   var [x, y, z] = Array(3)
     .fill()
     .map(() => THREE.MathUtils.randFloatSpread(100));
-
+  starlight.position.set(x,y,z);
   star.position.set(x, y, z);
-  scene.add(star);
+  scene.add(star, starlight);
 }
 
 Array(200).fill().forEach(addStar);
