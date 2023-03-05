@@ -51,11 +51,11 @@ scene.add(pointLight, ambientLight);
 
 // Helpers
 
-// var lightHelper = new THREE.PointLightHelper(pointLight)
-// var gridHelper = new THREE.GridHelper(200, 50);
-// scene.add(lightHelper, gridHelper)
+//var lightHelper = new THREE.PointLightHelper(pointLight)
+//var gridHelper = new THREE.GridHelper(200, 50);
+//scene.add(lightHelper, gridHelper)
 
-// var controls = new OrbitControls(camera, renderer.domElement);
+//var controls = new OrbitControls(camera, renderer.domElement);
 
 function addStar() {
   var geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -116,7 +116,7 @@ function moveCamera() {
   moon.rotation.y += 0.075;
   moon.rotation.z += 0.05;
 
-  
+  //controls.update();
 
 
   camera.position.z = t * -0.01;
